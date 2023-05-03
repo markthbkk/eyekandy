@@ -49,8 +49,6 @@ const Favorites = () => {
     if (!res.ok) {
       throw Error("Could not delete the image");
     }
-
-    // return await res.json();
   };
 
   const deleteFave = useMutation({
@@ -72,12 +70,6 @@ const Favorites = () => {
           align="center"
         >
           {images.data.map((image) => (
-            // <GridItem key={image.id}>
-            //   <Box>{image.id}</Box>
-            //   <Box>{image.urls.regular}</Box>
-            //   <Box>{image.description}</Box>
-            //   <Box>{image.user.username}</Box>
-            // </GridItem>
             <GridItem colSpan={[3, 3, 1, 1]} color="slate.700" key={image.id}>
               <Card maxW="md">
                 <CardBody>
@@ -101,7 +93,6 @@ const Favorites = () => {
                     </Text>
                     <Flex px="1rem" justify="space-between">
                       <Button
-                        // onClick={() => deleteFave.mutate(image)}
                         bg="blue.900"
                         color="white"
                         leftIcon={<QuestionIcon />}
