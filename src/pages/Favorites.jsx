@@ -168,7 +168,7 @@ const Favorites = () => {
 
   return (
     <>
-      <Flex justify="space-around" mt=".2rem">
+      <Flex justify="space-around" wrap="wrap" mt=".2rem" gap="1rem">
         <HStack
           py=".5rem"
           pl="2rem"
@@ -178,7 +178,7 @@ const Favorites = () => {
           borderColor="gray.200"
         >
           <Box px="1rem" fontWeight="normal" fontSize="lg" color="blue.900">
-            <Text>Logged in user: </Text>
+            <Text>User: </Text>
           </Box>
           <Box pr="2rem" fontStyle="italic" color="yellow.500">
             <Text>{currentUserEmail}</Text>
@@ -186,7 +186,7 @@ const Favorites = () => {
         </HStack>
         <HStack>
           <Box
-            w="35vh"
+            w="20rem"
             px="1rem"
             fontWeight="normal"
             fontSize="lg"

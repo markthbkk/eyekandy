@@ -102,7 +102,7 @@ const ImagesGallery = ({
   return (
     <Container maxW="container.xl" bg="white" color="black" mt="2rem" mb="5rem">
       {currentPage && (
-        <Flex justifyContent="right">
+        <Flex justifyContent="right" wrap="wrap">
           <HStack
             py=".5rem"
             borderRadius="5rem"
@@ -110,6 +110,7 @@ const ImagesGallery = ({
             w="30%"
             justify="center"
             bg="gray.100"
+            flexBasis="200px"
           >
             <Text fontSize="1.2rem" color="blue.900">
               Current page:

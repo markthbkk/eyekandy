@@ -92,7 +92,7 @@ function Home() {
         )}
         {currentUser && (
           <>
-            <Flex justify="center" mt=".2rem">
+            <Flex justify="space-around" wrap="wrap" mt=".2rem" gap="1rem">
               <HStack
                 py=".5rem"
                 pl="2rem"
@@ -100,6 +100,7 @@ function Home() {
                 borderRadius="5rem"
                 border="2px solid"
                 borderColor="gray.200"
+                mr="2rem"
               >
                 <Box
                   px="1rem"
@@ -107,64 +108,78 @@ function Home() {
                   fontSize="lg"
                   color="blue.900"
                 >
-                  <Text>Logged in user: </Text>
+                  <Text>User: </Text>
                 </Box>
                 <Box px="1rem" fontStyle="italic" color="yellow.500">
                   <Text>{currentUserEmail}</Text>
                 </Box>
               </HStack>
+
+              <Button
+                isDisabled={loading || !currentUser}
+                py="1.5rem"
+                size="md"
+                bg="blue.900"
+                color="white"
+                px="3rem"
+                fontWeight="normal"
+                onClick={handleLogout}
+              >
+                Logout
+              </Button>
             </Flex>
-            <Button
-              isDisabled={loading || !currentUser}
-              py="1.5rem"
-              size="md"
-              bg="blue.900"
-              color="white"
-              px="3rem"
-              fontWeight="normal"
-              onClick={handleLogout}
-            >
-              Logout
-            </Button>
           </>
         )}
       </Flex>
 
       {currentUser && (
         <>
-          <Flex justify="space-around">
-            <Box mb="2rem" w="4xl">
-              <form onSubmit={handleSubmit}>
-                <HStack>
-                  <InputGroup>
-                    <InputLeftElement
-                      pointerEvents="none"
-                      children={<Search2Icon color="gray.300" />}
-                    />
-                    <Input
-                      placeholder=" Enter image keywords "
-                      focusBorderColor="blue.900"
-                      value={value}
-                      onChange={handleChange}
-                      color="black"
-                      width="2xl"
-                    />
-                  </InputGroup>
+          <form onSubmit={handleSubmit}>
+            <Flex
+             
+              direction="row"
+              justify="space-around"
+              wrap="wrap"
+            >
+              {/* <Box mb="2rem" w="4xl"> */}
 
-                  <Button
-                    type="submit"
-                    size="md"
-                    bg="blue.900"
-                    color="white"
-                    px="3rem"
-                    fontWeight="normal"
-                  >
-                    Image Search
-                  </Button>
-                </HStack>
-              </form>
-            </Box>
-          </Flex>
+              <Box mb="2rem" flexBasis="20%" >
+                <InputGroup>
+                  <InputLeftElement
+                    pointerEvents="none"
+                    children={<Search2Icon color="gray.300" />}
+                  />
+                  <Input
+                    placeholder=" Enter image keywords "
+                    focusBorderColor="blue.900"
+                    value={value}
+                    onChange={handleChange}
+                    color="black"
+                    width="sm"
+                  />
+                </InputGroup>
+              </Box>
+              <Box
+                mb="2rem"
+                flexBasis="40%"
+                
+                align="center"
+              >
+                <Button
+                  type="submit"
+                  size="md"
+                  bg="blue.900"
+                  color="white"
+                  px="3rem"
+                  fontWeight="normal"
+                >
+                  Image Search
+                </Button>
+              </Box>
+
+              {/* </Box> */}
+            </Flex>
+          </form>
         </>
       )}
 
