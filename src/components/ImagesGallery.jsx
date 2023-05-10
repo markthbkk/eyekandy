@@ -12,14 +12,21 @@ import {
   CardBody,
   Button,
   Flex,
+  Link,
+  HStack,
 } from "@chakra-ui/react";
 import { ArrowLeftIcon, ArrowRightIcon } from "@chakra-ui/icons";
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-const ImagesGallery = ({ photos, currentPage, totalPages, setCurrentPage }) => {
-
-console.log(photos?.data)
+const ImagesGallery = ({
+  photos,
+  currentPage,
+  totalPages,
+  setCurrentPage,
+  owner,
+}) => {
+  console.log(photos?.data);
   const requestNextPage = () => {
     console.log(`Total Pages ${totalPages}`);
 
@@ -42,26 +49,39 @@ console.log(photos?.data)
       user,
     } = photo;
 
+    console.log(tags);
+    let tagsArray = [];
+
+    tags.forEach((tag) => {
+      tagsArray.push(tag.title);
+    });
+
+    console.log(tagsArray);
+
     const photoObj = {
+      owner: owner,
       id,
       created_at,
       description,
       alt_description,
       urls,
-      tags,
+      tags: tagsArray,
       current_user_collections,
       user,
     };
     console.log(photoObj);
 
-    const res = await fetch("http://localhost:5000/api/image", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(photoObj),
-    });
+    const res = await fetch(
+      "https://eyekandy-api.onrender.com/api/image",
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(photoObj),
+      }
+    );
 
     if (!res.ok) {
       throw Error("Could not add the image");
@@ -76,17 +96,34 @@ console.log(photos?.data)
       queryClient.invalidateQueries({ queryKey: ["allImages"] });
     },
   });
-    
-    const queryClient = useQueryClient();
 
+  const queryClient = useQueryClient();
 
   return (
     <Container maxW="container.xl" bg="white" color="black" mt="2rem" mb="5rem">
+      {currentPage && (
+        <Flex justifyContent="right">
+          <HStack
+            py=".5rem"
+            borderRadius="5rem"
+            borderColor="gray.200"
+            w="30%"
+            justify="center"
+            bg="gray.100"
+          >
+            <Text fontSize="1.2rem" color="blue.900">
+              Current page:
+            </Text>
+            <Text fontSize="1.2rem" color="yellow.500" pl="2rem">
+              {currentPage}
+            </Text>
+          </HStack>
+        </Flex>
+      )}
       <Grid
         templateColumns="repeat(3, 1fr)"
         gap={4}
         mt="5vh"
-        // autoRows="1fr"
         justify="center"
         align="center"
       >
@@ -111,7 +148,14 @@ console.log(photos?.data)
                     </Box>
 
                     <Text color="blue.700" fontSize="xl" align="left">
-                      {photo.user.username}
+                      <Link
+                        href={photo.user.links.html}
+                        textDecoration="none"
+                        isExternal
+                        _hover={{ textdecoration: "none", color: "orange" }}
+                      >
+                        {photo.user.username}
+                      </Link>
                     </Text>
                     <Button onClick={() => addFave.mutate(photo)}>
                       Fave it!
@@ -122,9 +166,11 @@ console.log(photos?.data)
             </GridItem>
           ))}
       </Grid>
-      
-        <Flex justify="space-around" mt="3rem">
+
+      <Flex justify="space-around" mt="3rem">
+        {currentPage > 1 && (
           <Button
+            isDisabled={currentPage === 1}
             leftIcon={<ArrowLeftIcon />}
             type="submit"
             size="md"
@@ -136,20 +182,21 @@ console.log(photos?.data)
           >
             Previous
           </Button>
-          <Button
-            rightIcon={<ArrowRightIcon />}
-            type="submit"
-            size="md"
-            bg="blue.900"
-            color="white"
-            px="3rem"
-            fontWeight="normal"
-            onClick={requestNextPage}
-          >
-            Next
-          </Button>
-        </Flex>
-      
+        )}
+        <Button
+          isDisabled={currentPage === totalPages}
+          rightIcon={<ArrowRightIcon />}
+          type="submit"
+          size="md"
+          bg="blue.900"
+          color="white"
+          px="3rem"
+          fontWeight="normal"
+          onClick={requestNextPage}
+        >
+          Next
+        </Button>
+      </Flex>
     </Container>
   );
 };

@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 import { createApi } from "unsplash-js";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
-import ImagesGallery from "./imagesGallery";
+import ImagesGallery from "./ImagesGallery";
 
-const SearchUnsplash = ({ query }) => {
+const SearchUnsplash = ({ query, owner }) => {
   
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
@@ -14,8 +14,10 @@ const SearchUnsplash = ({ query }) => {
 
   console.log(query);
 
+  useEffect(() => {setCurrentPage(1)},[query])
+
   const unsplash = createApi({
-    apiUrl: "http://localhost:5000/api",
+    apiUrl: "https://eyekandy-api.onrender.com/api",
   });
 
   const submitSearch = async () => {
@@ -47,7 +49,7 @@ const SearchUnsplash = ({ query }) => {
 
   return (
     <div>
-      { photos?.data?.length > 0 && <ImagesGallery photos={photos} totalPages={totalPages} currentPage={currentPage} setCurrentPage={setCurrentPage}/> }
+          {photos?.data?.length > 0 && <ImagesGallery photos={photos} totalPages={totalPages} currentPage={currentPage} setCurrentPage={setCurrentPage} owner={owner} /> }
     </div>
   );
 };
