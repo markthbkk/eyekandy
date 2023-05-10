@@ -212,14 +212,15 @@ const Favorites = () => {
           mt="5vh"
           justify="center"
           align="center"
+          p="1.5rem"
         >
           {filteredImages.map((image, index) => (
-            <GridItem colSpan={[3, 3, 1, 1]} color="slate.700" key={image.id}>
+            <GridItem colSpan={[3, 3, 3, 1]} color="slate.700" key={image.id}>
               <Card maxW="md">
                 <CardBody>
                   <Link href={image.urls.regular} isExternal>
                     <Image
-                      boxSize={["60vw", "60vw", "22vw", "18vw"]}
+                      boxSize={["60vw", "60vw", "45vw", "22vw"]}
                       p=".3rem"
                       src={image.urls.small}
                       alt={image.alt_description}
