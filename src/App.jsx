@@ -28,7 +28,7 @@ const router = createBrowserRouter(
       <Route path="/favorites" element={<Favorites />} />
     </Route>
   ),
-  { basename: "/eyekandy" }
+  // { basename: "/eyekandy" }
 );
 
 function App() {

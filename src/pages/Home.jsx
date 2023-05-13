@@ -184,7 +184,7 @@ function Home() {
       )}
 
       {query?.length > 0 && (
-        <SearchUnsplash query={query} owner={currentUser.email} />
+        <SearchUnsplash query={query} owner={currentUser.email} queryType="general" />
       )}
     </Container>
   );

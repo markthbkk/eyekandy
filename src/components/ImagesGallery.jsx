@@ -12,12 +12,12 @@ import {
   CardBody,
   Button,
   Flex,
-  Link,
   HStack,
 } from "@chakra-ui/react";
 import { ArrowLeftIcon, ArrowRightIcon } from "@chakra-ui/icons";
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+// import SearchUnsplash from "./searchUnsplash";
 
 const ImagesGallery = ({
   photos,
@@ -25,6 +25,8 @@ const ImagesGallery = ({
   totalPages,
   setCurrentPage,
   owner,
+  setUnsplashQueryType,
+  setUsername,
 }) => {
   console.log(photos?.data);
   const requestNextPage = () => {
@@ -49,39 +51,51 @@ const ImagesGallery = ({
       user,
     } = photo;
 
-    console.log(tags);
-    let tagsArray = [];
+    let photoObj;
 
-    tags.forEach((tag) => {
-      tagsArray.push(tag.title);
-    });
+    if (tags) {
+      console.log(tags);
+      let tagsArray = [];
 
-    console.log(tagsArray);
+      tags.forEach((tag) => {
+        tagsArray.push(tag.title);
+      });
 
-    const photoObj = {
-      owner: owner,
-      id,
-      created_at,
-      description,
-      alt_description,
-      urls,
-      tags: tagsArray,
-      current_user_collections,
-      user,
-    };
+      console.log(tagsArray);
+
+      photoObj = {
+        owner: owner,
+        id,
+        created_at,
+        description,
+        alt_description,
+        urls,
+        tags: tagsArray,
+        current_user_collections,
+        user,
+      };
+    } else {
+      photoObj = {
+        owner: owner,
+        id,
+        created_at,
+        description,
+        alt_description,
+        urls,
+        current_user_collections,
+        user,
+      };
+    }
     console.log(photoObj);
 
-    const res = await fetch(
-      "https://eyekandy-api.onrender.com/api/image",
-      {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(photoObj),
-      }
-    );
+    const res = await fetch("https://eyekandy-api.onrender.com/api/image", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(photoObj),
+    });
 
     if (!res.ok) {
       throw Error("Could not add the image");
@@ -98,6 +112,16 @@ const ImagesGallery = ({
   });
 
   const queryClient = useQueryClient();
+
+  const handleUserPhotos = (e) => {
+    console.log("GET USER PHOTOS");
+    const username = e.target.innerText;
+    console.log(username);
+    setUsername(username);
+    setCurrentPage(1);
+    setUnsplashQueryType("user");
+    queryClient.removeQueries({ queryKey: ["allPhotos"] });
+  };
 
   return (
     <Container maxW="container.xl" bg="white" color="black" mt="2rem" mb="5rem">
@@ -148,7 +172,7 @@ const ImagesGallery = ({
                       </Heading>
                     </Box>
 
-                    <Text color="blue.700" fontSize="xl" align="left">
+                    {/* <Text color="blue.700" fontSize="xl" align="left">
                       <Link
                         href={photo.user.links.html}
                         textDecoration="none"
@@ -157,7 +181,20 @@ const ImagesGallery = ({
                       >
                         {photo.user.username}
                       </Link>
-                    </Text>
+                    </Text> */}
+                    <Button
+                      px="1rem"
+                      // border="0px solid"
+                      borderColor="gray.200"
+                      bg="white"
+                      onClick={handleUserPhotos}
+                      color="blue.700"
+                      fontSize="lg"
+                      boxShadow="rgba(0, 0, 0, 0.20) 0px 1px 2px"
+                      _hover={{ textdecoration: "none", color: "orange" }}
+                    >
+                      {photo.user.username}
+                    </Button>
                     <Button onClick={() => addFave.mutate(photo)}>
                       Fave it!
                     </Button>
