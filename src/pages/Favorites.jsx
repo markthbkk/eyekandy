@@ -154,6 +154,10 @@ const Favorites = () => {
     currentPage > 1 && setCurrentPage(currentPage - 1);
   };
 
+
+   const goToLastPage = () => {
+     currentPage < totalPages && setCurrentPage(totalPages);
+   };
   const handleItemsPerPageChange = (e) => {
     console.log(e.target.value);
 
@@ -203,6 +207,23 @@ const Favorites = () => {
         </HStack>
       </Flex>
       <SearchBar setQuery={setQuery} setCurrentPage={setCurrentPage} />
+      {filteredImages?.length > 0 && (
+        <Flex justify="center">
+          <Button
+            isDisabled={currentPage === 1}
+            rightIcon={<ArrowRightIcon />}
+            type="submit"
+            size="md"
+            bg="blue.900"
+            color="white"
+            px="3rem"
+            fontWeight="normal"
+            onClick={goToLastPage}
+          >
+            Last Page
+          </Button>
+        </Flex>
+      )}
 
       {filteredImages?.length > 0 && (
         // <>
