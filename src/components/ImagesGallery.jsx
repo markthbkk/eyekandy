@@ -35,6 +35,11 @@ const ImagesGallery = ({
     currentPage < totalPages && setCurrentPage(currentPage + 1);
   };
 
+  const goToLastPage = () => {
+
+    currentPage < totalPages && setCurrentPage(totalPages);
+  }
+
   const requestPreviousPage = () => {
     currentPage > 1 && setCurrentPage(currentPage - 1);
   };
@@ -125,6 +130,23 @@ const ImagesGallery = ({
 
   return (
     <Container maxW="container.xl" bg="white" color="black" mt="2rem" mb="5rem">
+      {photos?.data?.length > 0 && (
+        <Flex justify="center">
+          <Button
+            isDisabled={currentPage === 1}
+            leftIcon={<ArrowLeftIcon />}
+            type="submit"
+            size="md"
+            bg="blue.900"
+            color="white"
+            px="3rem"
+            fontWeight="normal"
+            onClick={goToLastPage}
+          >
+            Last Page
+          </Button>
+        </Flex>
+      )}
       {currentPage && (
         <Flex justifyContent="right" wrap="wrap">
           <HStack
