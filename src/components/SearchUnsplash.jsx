@@ -52,6 +52,7 @@ const SearchUnsplash = ({ query, owner, queryType }) => {
         console.log(response.response.results.results);
 
         setTotalPages(1);
+        setUnsplashQueryType("general")
 
         return response.response.results.results;
       }
