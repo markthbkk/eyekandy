@@ -66,14 +66,17 @@ const Favorites = () => {
 
       console.log(body);
 
-      const res = await fetch("https://eyekandy-api.onrender.com/api/images/search", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(body),
-      });
+      const res = await fetch(
+        "https://eyekandy-api.onrender.com/api/images/search",
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(body),
+        }
+      );
 
       if (!res.ok) {
         throw Error("Could not fetch the images");
@@ -102,13 +105,10 @@ const Favorites = () => {
     // refetchOnWindowFocus: false,
   });
 
-  
-  filteredImages = images.data
+  filteredImages = images.data;
 
   const deleteImage = async ({ image }) => {
-  
-    const url =
-      "https://eyekandy-api.onrender.com/api/image/" + image._id;
+    const url = "https://eyekandy-api.onrender.com/api/image/" + image._id;
 
     const res = await fetch(url, {
       method: "DELETE",
@@ -122,7 +122,6 @@ const Favorites = () => {
   const deleteFave = useMutation({
     mutationFn: deleteImage,
     onSuccess: () => {
-     
       queryClient.invalidateQueries({ queryKey: ["allImages"] });
     },
   });
@@ -154,11 +153,10 @@ const Favorites = () => {
     currentPage > 1 && setCurrentPage(currentPage - 1);
   };
 
-
-   const goToLastPage = () => {
-     currentPage < totalPages &&
-       setCurrentPage(queryClient.getQueryData(["TotalPages"]));
-   };
+  const goToLastPage = () => {
+    currentPage < queryClient.getQueryData(["TotalPages"]) &&
+      setCurrentPage(queryClient.getQueryData(["TotalPages"]));
+  };
   const handleItemsPerPageChange = (e) => {
     console.log(e.target.value);
 
