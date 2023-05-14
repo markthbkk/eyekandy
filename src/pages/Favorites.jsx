@@ -156,7 +156,8 @@ const Favorites = () => {
 
 
    const goToLastPage = () => {
-     currentPage < totalPages && setCurrentPage(totalPages);
+     currentPage < totalPages &&
+       setCurrentPage(queryClient.getQueryData(["TotalPages"]));
    };
   const handleItemsPerPageChange = (e) => {
     console.log(e.target.value);
@@ -210,7 +211,9 @@ const Favorites = () => {
       {filteredImages?.length > 0 && (
         <Flex justify="center">
           <Button
-            // isDisabled={currentPage === totalPages}
+            isDisabled={
+              currentPage === queryClient.getQueryData(["TotalPages"])
+            }
             rightIcon={<ArrowRightIcon />}
             type="submit"
             size="md"
