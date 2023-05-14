@@ -65,6 +65,7 @@ function Home() {
     e.preventDefault();
     console.log(value);
     setQuery(value);
+    setValue("")
   };
 
   const handleChange = (e) => {
