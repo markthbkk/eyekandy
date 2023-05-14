@@ -210,7 +210,7 @@ const Favorites = () => {
       {filteredImages?.length > 0 && (
         <Flex justify="center">
           <Button
-            isDisabled={currentPage === 1}
+            isDisabled={currentPage === totalPages}
             rightIcon={<ArrowRightIcon />}
             type="submit"
             size="md"
