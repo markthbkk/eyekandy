@@ -96,7 +96,14 @@ const FavoriteModal = ({ imageID, isOpen, onClose }) => {
 
   thisImage && console.log(thisImage);
   return (
-    <Modal onClose={onClose} isOpen={isOpen} isCentered size="6xl">
+    <Modal
+      onClose={onClose}
+      isOpen={isOpen}
+      isCentered
+      size="4xl"
+      scrollBehavior="inside"
+      blockScrollOnMount="false"
+    >
       <ModalOverlay bg="blackAlpha.300" backdropFilter="blur(10px) " />
       <ModalContent>
         <ModalHeader color="blue.900">Image data</ModalHeader>
