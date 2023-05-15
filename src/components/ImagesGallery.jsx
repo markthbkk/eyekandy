@@ -161,7 +161,7 @@ const ImagesGallery = ({
               <Card maxW="md">
                 <CardBody>
                   <Image
-                    boxSize={["60vw", "60vw", "22vw", "18vw"]}
+                    boxSize={["75vw", "75vw", "22vw", "18vw"]}
                     p=".3rem"
                     src={photo.urls.small}
                     alt={photo.alt_description}
