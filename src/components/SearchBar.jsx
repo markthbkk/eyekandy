@@ -78,7 +78,7 @@ const SearchBar = ({ setQuery, setCurrentPage }) => {
 
             <Button
               type="submit"
-              size="lg"
+              size="md"
               bg="blue.900"
               color="white"
               px="3rem"

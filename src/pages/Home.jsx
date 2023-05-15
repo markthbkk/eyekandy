@@ -80,7 +80,7 @@ function Home() {
         {!currentUser && (
           <Button
             isDisabled={loading || currentUser}
-            py="1.5rem"
+            // py="1.5rem"
             size="md"
             bg="blue.900"
             color="white"
@@ -118,7 +118,7 @@ function Home() {
 
               <Button
                 isDisabled={loading || !currentUser}
-                py="1.5rem"
+                // py="1.5rem"
                 size="md"
                 bg="blue.900"
                 color="white"
