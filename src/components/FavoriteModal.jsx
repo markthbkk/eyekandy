@@ -144,7 +144,7 @@ const FavoriteModal = ({ imageID, isOpen, onClose }) => {
                 <Text fontWeight="bold">Image Tags</Text>
               </Box>
               <Flex
-                justify="space-around"
+                justify={["left", "left", "space-around", "space-around"]}
                 mt="4rem"
                 mb="3rem"
                 wrap="wrap"
@@ -153,7 +153,7 @@ const FavoriteModal = ({ imageID, isOpen, onClose }) => {
               >
                 {thisImage?.data[0]?.tags?.map((tag) => (
                   <Box key={uuidv4()}>
-                    <Flex gap=".1rem" justify="left">
+                    <Flex gap=".1rem" >
                       <Box
                         borderRadius="md"
                         px="1.6rem"
