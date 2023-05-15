@@ -153,7 +153,7 @@ const FavoriteModal = ({ imageID, isOpen, onClose }) => {
               >
                 {thisImage?.data[0]?.tags?.map((tag) => (
                   <Box key={uuidv4()}>
-                    <Flex gap=".1rem">
+                    <Flex gap=".1rem" justify="left">
                       <Box
                         borderRadius="md"
                         px="1.6rem"
