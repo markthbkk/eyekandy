@@ -149,6 +149,7 @@ const FavoriteModal = ({ imageID, isOpen, onClose }) => {
                 mb="3rem"
                 wrap="wrap"
                 maxW={["80%", "80%", "40vw", "40vw"]}
+                gap=".8rem"
               >
                 {thisImage?.data[0]?.tags?.map((tag) => (
                   <Box key={uuidv4()}>
