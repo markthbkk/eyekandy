@@ -242,7 +242,7 @@ const Favorites = () => {
                 <CardBody>
                   <Link href={image.urls.regular} isExternal>
                     <Image
-                      boxSize={["60vw", "60vw", "45vw", "22vw"]}
+                      boxSize={["75vw", "75vw", "45vw", "22vw"]}
                       p=".3rem"
                       src={image.urls.small}
                       alt={image.alt_description}
