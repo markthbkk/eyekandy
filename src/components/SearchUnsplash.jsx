@@ -19,7 +19,7 @@ const SearchUnsplash = ({ query, owner, queryType }) => {
   }, [query]);
 
   const unsplash = createApi({
-    apiUrl: "https://eyekandy-api.onrender.com/api",
+    apiUrl: "https://eyekandyapi.lkmi-tech.com/api",
   });
 
   const submitSearch = async () => {

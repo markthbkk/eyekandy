@@ -90,7 +90,7 @@ const ImagesGallery = ({
     }
     console.log(photoObj);
 
-    const res = await fetch("https://eyekandy-api.onrender.com/api/image", {
+    const res = await fetch("https://eyekandyapi.lkmi-tech.com/api/image", {
       method: "POST",
       headers: {
         Accept: "application/json",

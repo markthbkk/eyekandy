@@ -5,6 +5,7 @@
   "type": "module",
   "homepage": "https://markthbkk.github.io/eyekandy/",
   "scripts": {
+    "start": "vite",
     "dev": "vite --host",
     "build": "vite build",
     "predeploy": "npm run build",

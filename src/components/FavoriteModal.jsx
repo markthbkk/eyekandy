@@ -29,7 +29,7 @@ const FavoriteModal = ({ imageID, isOpen, onClose }) => {
 
   const fetchThisImage = async () => {
     const url =
-      "https://eyekandy-api.onrender.com/api/image/" + imageID;
+      "https://eyekandyapi.lkmi-tech.com/api/image/" + imageID;
 
     const res = await fetch(url);
 
@@ -51,7 +51,7 @@ const FavoriteModal = ({ imageID, isOpen, onClose }) => {
     const body = { operation: "deletetag", tags: tag };
 
     const res = await fetch(
-      "https://eyekandy-api.onrender.com/api/image/" + id,
+      "https://eyekandyapi.lkmi-tech.com/api/image/" + id,
       {
         method: "PATCH",
         headers: {
@@ -77,7 +77,7 @@ const FavoriteModal = ({ imageID, isOpen, onClose }) => {
     const body = { operation: "addtag", tags: tag };
 
     const res = await fetch(
-      "https://eyekandy-api.onrender.com/api/image/" + imageID,
+      "https://eyekandyapi.lkmi-tech.com/api/image/" + imageID,
       {
         method: "PATCH",
         headers: {
