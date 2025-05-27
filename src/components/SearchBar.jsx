@@ -10,10 +10,9 @@ import {
   Button,
   Input,
   InputGroup,
-  InputLeftElement,
   Flex,
-  InputRightElement,
 } from "@chakra-ui/react";
+import { InputLeftElement, InputRightElement } from "@chakra-ui/input";
 import { Search2Icon, CloseIcon } from "@chakra-ui/icons";
 import { useQueryClient } from "@tanstack/react-query";
 
@@ -46,7 +45,7 @@ const SearchBar = ({ setQuery, setCurrentPage }) => {
     <Container maxW="container.xl" bg="white" color="black" mt="2rem" mb="5rem">
       <Box mb="2rem" w="100%">
         <form onSubmit={handleSubmit}>
-          <Flex wrap="wrap" gap="1rem" justify="space-around" w="100%" >
+          <Flex wrap="wrap" gap="1rem" justify="space-around" w="100%">
             <Box flexBasis="400px">
               <InputGroup size="lg">
                 <InputLeftElement
