@@ -67,7 +67,7 @@ const Favorites = () => {
       console.log(body);
 
       const res = await fetch(
-        "https://eyekandy-api.onrender.com/api/images/search",
+        "https://eyekandyapi.lkmi-tech.com/api/images/search",
         {
           method: "POST",
           headers: {
@@ -108,7 +108,7 @@ const Favorites = () => {
   filteredImages = images.data;
 
   const deleteImage = async ({ image }) => {
-    const url = "https://eyekandy-api.onrender.com/api/image/" + image._id;
+    const url = "https://eyekandyapi.lkmi-tech.com/api/image/" + image._id;
 
     const res = await fetch(url, {
       method: "DELETE",
