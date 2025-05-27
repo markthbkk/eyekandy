@@ -14,7 +14,7 @@ import {
   Flex,
 } from "@chakra-ui/react";
 import { Search2Icon } from "@chakra-ui/icons";
-import { SearchUnsplash } from "../components/searchUnsplash";
+import { SearchUnsplash } from "../components/SearchUnsplash";
 import { useQueryClient } from "@tanstack/react-query";
 
 function Home() {
