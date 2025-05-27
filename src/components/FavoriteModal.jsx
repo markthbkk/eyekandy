@@ -1,11 +1,5 @@
 /* eslint-disable react/prop-types */
 import {
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalCloseButton,
-  ModalBody,
   Spacer,
   Flex,
   Box,
@@ -14,6 +8,15 @@ import {
   Button,
   Input,
 } from "@chakra-ui/react";
+
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalCloseButton,
+  ModalBody,
+} from "@chakra-ui/modal";
 // import { MinusIcon, AddIcon } from "@chakra-ui/icons";
 import { v4 as uuidv4 } from "uuid";
 import { FaMinusCircle, FaPlusCircle } from "react-icons/fa";
