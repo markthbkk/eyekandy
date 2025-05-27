@@ -14,7 +14,7 @@ import {
 } from "@chakra-ui/react";
 import {InputLeftElement} from "@chakra-ui/input";
 import { Search2Icon } from "@chakra-ui/icons";
-import { SearchUnsplash } from "../components/SearchUnsplash";
+import SearchUnsplash from "../components/SearchUnsplash";
 import { useQueryClient } from "@tanstack/react-query";
 
 function Home() {
