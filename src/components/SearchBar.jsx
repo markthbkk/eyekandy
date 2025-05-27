@@ -10,9 +10,11 @@ import {
   Button,
   Input,
   InputGroup,
+  InputLeftElement,
+  InputRightElement,
   Flex,
 } from "@chakra-ui/react";
-import { InputLeftElement, InputRightElement } from "@chakra-ui/input";
+// import { InputLeftElement, InputRightElement } from "@chakra-ui/input";
 import { Search2Icon, CloseIcon } from "@chakra-ui/icons";
 import { useQueryClient } from "@tanstack/react-query";
 
