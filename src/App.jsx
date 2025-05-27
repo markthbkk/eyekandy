@@ -20,19 +20,17 @@ const queryClient = new QueryClient({
   },
 });
 
-
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
       <Route index element={<Home />} />
       <Route path="/favorites" element={<Favorites />} />
     </Route>
-  ),
-  { basename: "/eyekandy" }
+  )
+  // { basename: "/eyekandy" }
 );
 
 function App() {
-
   return (
     <ChakraProvider>
       <QueryClientProvider client={queryClient}>
@@ -41,7 +39,6 @@ function App() {
       </QueryClientProvider>
     </ChakraProvider>
   );
-  
 }
 
 export default App;
